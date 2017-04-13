@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+	<script src="artTemplate/template.js"></script>
+	<script>
+		var data = [{
+			"cs_id": "1",
+			"cs_name": "发福利啦",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc4418201f6.jpg?x-oss-process=image\/crop,x_0,y_8,w_264,h_132",
+			"tc_name": "叶海波",
+			"cg_name": null
+		}, {
+			"cs_id": "33",
+			"cs_name": "奥特曼打小怪兽",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc40d4af413.jpg?x-oss-process=image\/crop,x_0,y_0,w_300,h_150",
+			"tc_name": "叶海波",
+			"cg_name": "张意娟是张渣渣"
+		}, {
+			"cs_id": "12",
+			"cs_name": "小公举",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58c435c0e93c4.png?x-oss-process=image\/crop,x_0,y_0,w_0,h_0",
+			"tc_name": "前端学院",
+			"cg_name": "IIII"
+		}, {
+			"cs_id": "34",
+			"cs_name": "php",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc410fb9563.jpg?",
+			"tc_name": null,
+			"cg_name": null
+		}, {
+			"cs_id": "6",
+			"cs_name": "html",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc4132da597.jpg?x-oss-process=image\/crop,x_0,y_58,w_500,h_250",
+			"tc_name": "张张张",
+			"cg_name": "前端开发"
+		}, {
+			"cs_id": "9",
+			"cs_name": "fdgfd",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc416648418.jpg?",
+			"tc_name": null,
+			"cg_name": null
+		}, {
+			"cs_id": "2",
+			"cs_name": "帅哥约吗？",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc41c568296.JPG?x-oss-process=image\/crop,x_1,y_32,w_136,h_68",
+			"tc_name": "前端学院",
+			"cg_name": null
+		}, {
+			"cs_id": "44",
+			"cs_name": "salrkthear",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/58bc4202ae5cd.jpg?",
+			"tc_name": null,
+			"cg_name": "云数据"
+		}, {
+			"cs_id": "111",
+			"cs_name": "vgj",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/?",
+			"tc_name": null,
+			"cg_name": null
+		}, {
+			"cs_id": "22",
+			"cs_name": "hello",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/589c432a2b34f.jpg?x-oss-process=image\/crop,x_0,y_16,w_438,h_219",
+			"tc_name": "前端学院",
+			"cg_name": null
+		}, {
+			"cs_id": "7",
+			"cs_name": "c--",
+			"cs_cover": "http:\/\/static.botue.com\/images\/cover\/?",
+			"tc_name": null,
+			"cg_name": null
+		}];
+	</script>
+
+	<script type="text/template" id="tpl">
+		{{each arr as v i}}
+			<tr>
+				<td>{{v.cs_id}}</td>
+				<td>{{v.cs_name}}</td>
+				<td>{{v.cs_cover}}</td>
+				<td>{{v.tc_name}}</td>
+				<td>{{v.cg_name}}</td>
+			</tr>
+		{{/each}}
+	</script>
+</head>
+<body>
+	<input type="button" value="按照id排序" id="btn">
+	<table border=1>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>名称</th>
+				<th>封面</th>
+				<th>老师名称</th>
+				<th>分类名称</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+
+	</table>
+
+	<script>
+		var htmlStr = template("tpl", {arr: data});
+		$("tbody").html(htmlStr);
+
+		var asc = true;
+		$("#btn").click(function(){
+
+			if(asc){
+				asc = false;
+				data = data.sort(function(a, b){
+					return parseInt(a.cs_id) - parseInt(b.cs_id);
+				})
+			}else{
+				asc = true;
+				data = data.sort(function(a, b){
+					return parseInt(b.cs_id) - parseInt(a.cs_id);
+				})
+			}
+
+		
+			var htmlStr = template("tpl", {arr: data});
+			$("tbody").html(htmlStr);
+		});
+	</script>
+</body>
+</html>
